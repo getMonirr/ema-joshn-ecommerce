@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
+import {
+  clearCartFromDB,
+  emaAddToDB,
+  getCartFromDB,
+} from "../../utilities/emaFakeDB";
 import OrderSummary from "../Order-Summary/Order-Summary";
 import Product from "../Product/Product";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  // control cart
+  const isStoredCart = getCartFromDB() || [];
+  const [cart, setCart] = useState(isStoredCart);
 
   // load data function
   const loadData = async () => {
@@ -30,15 +37,16 @@ const Shop = () => {
         p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
       );
       setCart(updatedCart);
+      emaAddToDB(cart);
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
   };
 
-  // handle clear cart 
+  // handle clear cart
   const handleClearCart = () => {
-    setCart([]);
-  }
+    setCart(clearCartFromDB());
+  };
 
   const allProducts = products.map((pdt) => (
     <Product key={pdt.id} product={pdt} onAddToCart={handleAddToCart}></Product>
