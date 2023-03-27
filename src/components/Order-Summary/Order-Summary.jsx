@@ -7,7 +7,10 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
-const OrderSummary = ({cart}) => {
+const OrderSummary = ({ cart }) => {
+  // calculate total
+  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+
   return (
     <div className="">
       <h4 className="font-semibold text-2xl mt-7 text-center text-ema-text mb-12">
@@ -16,7 +19,7 @@ const OrderSummary = ({cart}) => {
       <div>
         <div className="space-y-6">
           <p>Selected Item: {cart.length} </p>
-          <p>Total Price: </p>
+          <p>Total Price: ${totalPrice}</p>
           <p>Total Shipping Charge: </p>
           <p>Tax: </p>
           <h4 className="font-normal text-xl">Grand Total: </h4>
