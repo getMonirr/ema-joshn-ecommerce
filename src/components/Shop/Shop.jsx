@@ -10,8 +10,7 @@ import Product from "../Product/Product";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   // control cart
-  const isStoredCart = getCartFromDB() || [];
-  const [cart, setCart] = useState(isStoredCart);
+  const [cart, setCart] = useState(getCartFromDB() || []);
 
   // load data function
   const loadData = async () => {
@@ -45,7 +44,8 @@ const Shop = () => {
 
   // handle clear cart
   const handleClearCart = () => {
-    setCart(clearCartFromDB());
+    clearCartFromDB();
+    setCart([]);
   };
 
   const allProducts = products.map((pdt) => (
