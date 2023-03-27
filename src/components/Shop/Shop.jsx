@@ -4,12 +4,15 @@ import Product from "../Product/Product";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
   // load data function
   const loadData = async () => {
     const res = await fetch("products.json");
     const data = await res.json();
     setProducts(data);
   };
+
   // load data
   useEffect(() => {
     try {
@@ -18,18 +21,23 @@ const Shop = () => {
       console.log(error);
     }
   }, []);
+
+  // handle add to cart
+  const handleAddToCart = (product) => {
+    setCart([...cart,product]);
+  };
+
   const allProducts = products.map((pdt) => (
-    <Product key={pdt.id} product={pdt}></Product>
+    <Product key={pdt.id} product={pdt} onAddToCart={handleAddToCart}></Product>
   ));
+
   return (
     <div className="shop-container grid grid-cols-5 container mx-auto gap-16">
       <div className="product-container col-span-4 my-32">
-        <div className="lg:grid grid-cols-3 gap-8">
-        {allProducts}
-        </div>
+        <div className="lg:grid grid-cols-3 gap-8">{allProducts}</div>
       </div>
       <div className="order-summary bg-ema-bg px-5">
-        <OrderSummary></OrderSummary>
+        <OrderSummary cart={cart}></OrderSummary>
       </div>
     </div>
   );

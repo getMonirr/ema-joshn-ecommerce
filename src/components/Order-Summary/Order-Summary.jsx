@@ -7,7 +7,7 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
-const OrderSummary = () => {
+const OrderSummary = ({cart}) => {
   return (
     <div className="">
       <h4 className="font-semibold text-2xl mt-7 text-center text-ema-text mb-12">
@@ -15,7 +15,7 @@ const OrderSummary = () => {
       </h4>
       <div>
         <div className="space-y-6">
-          <p>Selected Item: </p>
+          <p>Selected Item: {cart.length} </p>
           <p>Total Price: </p>
           <p>Total Shipping Charge: </p>
           <p>Tax: </p>
