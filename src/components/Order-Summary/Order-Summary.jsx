@@ -1,11 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-  faDeleteLeft,
-  faShoppingCart,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const OrderSummary = ({ cart }) => {
   // calculate total

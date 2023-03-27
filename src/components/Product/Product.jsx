@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-const Product = ({ product,onAddToCart }) => {
+const Product = ({ product, onAddToCart }) => {
   const { name, img, id, seller, ratings, price } = product;
   return (
     <>
@@ -18,7 +18,10 @@ const Product = ({ product,onAddToCart }) => {
             <p>Rating: {ratings}</p>
           </div>
         </div>
-        <button className="btn rounded-none rounded-b-lg bg-ema-bg border-ema-border border-b-0 border-l-0 border-r-0 text-black border-t-1" onClick={() => onAddToCart(product)}>
+        <button
+          className="btn rounded-none rounded-b-lg bg-ema-bg border-ema-border border-b-0 border-l-0 border-r-0 text-black border-t-1"
+          onClick={() => onAddToCart(product)}
+        >
           Add To Cart
           <FontAwesomeIcon className="ml-2" icon={faShoppingCart} />
         </button>

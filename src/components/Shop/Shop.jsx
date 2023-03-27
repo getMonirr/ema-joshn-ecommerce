@@ -24,7 +24,7 @@ const Shop = () => {
 
   // handle add to cart
   const handleAddToCart = (product) => {
-    setCart([...cart,product]);
+    setCart([...cart, product]);
   };
 
   const allProducts = products.map((pdt) => (
