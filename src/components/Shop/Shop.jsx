@@ -35,6 +35,11 @@ const Shop = () => {
     }
   };
 
+  // handle clear cart 
+  const handleClearCart = () => {
+    setCart([]);
+  }
+
   const allProducts = products.map((pdt) => (
     <Product key={pdt.id} product={pdt} onAddToCart={handleAddToCart}></Product>
   ));
@@ -45,7 +50,7 @@ const Shop = () => {
         <div className="lg:grid grid-cols-3 gap-8">{allProducts}</div>
       </div>
       <div className="order-summary bg-ema-bg px-5">
-        <OrderSummary cart={cart}></OrderSummary>
+        <OrderSummary cart={cart} onClearCart={handleClearCart}></OrderSummary>
       </div>
     </div>
   );
