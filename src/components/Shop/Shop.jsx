@@ -22,13 +22,13 @@ const Shop = () => {
     <Product key={pdt.id} product={pdt}></Product>
   ));
   return (
-    <div className="shop-container grid grid-cols-5 container mx-auto my-8">
-      <div className="product-container col-span-4">
+    <div className="shop-container grid grid-cols-5 container mx-auto gap-16">
+      <div className="product-container col-span-4 my-32">
         <div className="lg:grid grid-cols-3 gap-8">
         {allProducts}
         </div>
       </div>
-      <div className="order-summary">
+      <div className="order-summary bg-ema-bg px-5">
         <OrderSummary></OrderSummary>
       </div>
     </div>

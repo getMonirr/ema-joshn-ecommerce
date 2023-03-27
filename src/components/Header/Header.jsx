@@ -4,7 +4,7 @@ import logo from '../../assets/images/Logo.svg'
 const Header = () => {
   return (
     <nav className="bg-slate-800">
-      <div className="navbar container mx-auto text-white">
+      <div className="navbar container mx-auto text-white pr-0">
         <div className="flex-1">
         <a href="/home">
             <img src={logo} alt="" />
@@ -22,7 +22,7 @@ const Header = () => {
               <a href="/inventory">Manage Inventory</a>
             </li>
             <li className="hover:text-orange-300">
-              <a href="/login">Login</a>
+              <a className="pr-0" href="/login">Login</a>
             </li>
           </ul>
         </div>
