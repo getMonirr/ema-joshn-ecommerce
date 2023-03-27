@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const Product = ({ product }) => {
   const { name, img, id, seller, ratings, price } = product;
@@ -12,11 +14,14 @@ const Product = ({ product }) => {
           <h2 className="card-title">{name}</h2>
           <p className="font-normal text-lg text-ema-text">Price: ${price}</p>
           <div className="mt-10 space-y-2">
-          <p>Manufacturer: {seller}</p>
-          <p>Rating: {ratings}</p>
+            <p>Manufacturer: {seller}</p>
+            <p>Rating: {ratings}</p>
           </div>
         </div>
-          <button className="btn rounded-none rounded-b-lg bg-ema-bg border-ema-border border-b-0 border-l-0 border-r-0 text-black border-t-1">Add To Cart</button>
+        <button className="btn rounded-none rounded-b-lg bg-ema-bg border-ema-border border-b-0 border-l-0 border-r-0 text-black border-t-1">
+          Add To Cart
+          <FontAwesomeIcon className="ml-2" icon={faShoppingCart} />
+        </button>
       </div>
     </>
   );
