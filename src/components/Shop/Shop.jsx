@@ -24,7 +24,15 @@ const Shop = () => {
 
   // handle add to cart
   const handleAddToCart = (product) => {
-    setCart([...cart, product]);
+    const isExistProduct = cart.find((p) => p.id === product.id);
+    if (isExistProduct) {
+      const updatedCart = cart.map((p) =>
+        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+      );
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
   };
 
   const allProducts = products.map((pdt) => (

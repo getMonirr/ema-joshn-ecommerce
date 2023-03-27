@@ -4,7 +4,7 @@ import { faArrowRight, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const OrderSummary = ({ cart }) => {
   // calculate total
-  const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0);
+  const totalPrice = cart.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0);
 
   return (
     <div className="">
