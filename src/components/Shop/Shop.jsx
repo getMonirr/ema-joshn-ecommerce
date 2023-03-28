@@ -10,7 +10,7 @@ import Product from "../Product/Product";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   // control cart
-  const [cart, setCart] = useState(getCartFromDB() || []);
+  const [cart, setCart] = useState([]);
 
   // load data function
   const loadData = async () => {
@@ -29,18 +29,23 @@ const Shop = () => {
   }, []);
 
   // handle add to cart
+  // const handleAddToCart = (product) => {
+  //   const isExistProduct = cart.find((p) => p.id === product.id);
+  //   if (isExistProduct) {
+  //     const updatedCart = cart.map((p) =>
+  //       p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+  //     );
+  //     setCart(updatedCart);
+  //     emaAddToDB(cart);
+  //   } else {
+  //     setCart([...cart, { ...product, quantity: 1 }]);
+  //   }
+  // };
+
   const handleAddToCart = (product) => {
-    const isExistProduct = cart.find((p) => p.id === product.id);
-    if (isExistProduct) {
-      const updatedCart = cart.map((p) =>
-        p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
-      );
-      setCart(updatedCart);
-      emaAddToDB(cart);
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-  };
+    setCart([...cart, product])
+  }
+
 
   // handle clear cart
   const handleClearCart = () => {
