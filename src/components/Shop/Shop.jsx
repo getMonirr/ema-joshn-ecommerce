@@ -4,6 +4,7 @@ import {
   emaAddToDB,
   getCartFromDB,
 } from "../../utilities/emaFakeDB";
+import { addToDb, deleteShoppingCart, getShoppingCart } from "../../utilities/fakedb";
 import OrderSummary from "../Order-Summary/Order-Summary";
 import Product from "../Product/Product";
 
@@ -43,13 +44,29 @@ const Shop = () => {
   // };
 
   const handleAddToCart = (product) => {
-    setCart([...cart, product])
+    setCart([...cart, product]);
+    
+    addToDb(product.id);
   }
+
+  // load data from data base
+  useEffect(() => {
+    const newCart = [];
+    const storedCart = getShoppingCart();
+    for(const id in storedCart){
+      const addedProduct = products.find(pd => pd.id === id);
+      if(addedProduct){
+        addedProduct.quantity = storedCart[id];
+        newCart.push(addedProduct);
+      }
+    }
+    setCart(newCart);
+  },[products])
 
 
   // handle clear cart
   const handleClearCart = () => {
-    clearCartFromDB();
+    deleteShoppingCart();
     setCart([]);
   };
 

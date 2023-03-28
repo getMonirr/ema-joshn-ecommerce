@@ -17,12 +17,15 @@ const OrderSummary = ({ cart, onClearCart }) => {
   let totalPrice = 0;
   let shippingCharge = 0;
   let tax = 0;
+  let quantity = 0;
   for (const pdt of cart) {
-    totalPrice += pdt.price;
+    pdt.quantity = pdt.quantity || 1;
+    totalPrice += (pdt.price * pdt.quantity);
     shippingCharge += pdt.shipping;
     tax += (totalPrice * 7) / 100;
+    quantity += pdt.quantity;
   }
-
+  // console.log(cart);
   return (
     <div className="sticky top-0">
       <h4 className="font-semibold text-2xl mt-7 text-center text-ema-text mb-12">
@@ -30,7 +33,7 @@ const OrderSummary = ({ cart, onClearCart }) => {
       </h4>
       <div>
         <div className="space-y-6">
-          <p>Selected Item: {cart.length} </p>
+          <p>Selected Item: {quantity} </p>
           <p>Total Price: ${totalPrice}</p>
           <p>Total Shipping Charge: ${shippingCharge}</p>
           <p>Tax: ${tax.toFixed(2)}</p>

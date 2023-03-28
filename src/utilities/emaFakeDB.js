@@ -11,7 +11,7 @@ const getCartFromDB = () => {
 
 // clear cart from data base
 const clearCartFromDB = () => {
-    localStorage.removeItem('ema-shopping-cart');
+    localStorage.removeItem('shopping-cart');
 }
 export {
     emaAddToDB,
