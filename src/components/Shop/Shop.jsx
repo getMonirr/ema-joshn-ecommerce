@@ -45,7 +45,17 @@ const Shop = () => {
 
   const handleAddToCart = (product) => {
     setCart([...cart, product]);
-    
+    let newCart = [];
+    const isExist = cart.find(pd => pd.id === product.id);
+    if(!isExist){
+      product.quantity = 1;
+      newCart = [...cart,product];
+    }else{
+      isExist.quantity = isExist.quantity + 1;
+      const restCart = cart.filter(pd => pd.id !== product.id);
+      newCart = [...restCart, isExist];
+    }
+    setCart(newCart);
     addToDb(product.id);
   }
 
@@ -61,6 +71,7 @@ const Shop = () => {
       }
     }
     setCart(newCart);
+    console.log(newCart);
   },[products])
 
 
