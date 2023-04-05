@@ -1,30 +1,31 @@
 import React from "react";
 import logo from "../../assets/images/Logo.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <nav className="bg-slate-800">
       <div className="navbar container mx-auto text-white pr-0">
         <div className="flex-1">
-          <a href="/home">
+          <Link to="/">
             <img src={logo} alt="" />
-          </a>
+          </Link>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li className="hover:text-orange-300">
-              <a href="/order">Order</a>
+              <Link to="/">Shop</Link>
             </li>
             <li className="hover:text-orange-300">
-              <a href="/order-review">Order Review</a>
+              <Link to="/orders">Orders</Link>
             </li>
             <li className="hover:text-orange-300">
-              <a href="/inventory">Manage Inventory</a>
+              <Link to="/inventory">Manage Inventory</Link>
             </li>
             <li className="hover:text-orange-300">
-              <a className="pr-0" href="/login">
+              <Link className="pr-0" to="/login">
                 Login
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
