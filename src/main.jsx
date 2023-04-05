@@ -9,6 +9,7 @@ import Order from "./components/Order/Order";
 import Inventory from "./components/Inventory/Inventory";
 import Login from "./components/Login/Login";
 import { orderItemLoader } from "./Loader/orderItemsLoader";
+import ProceedOrder from "./components/ProccedOrder/ProceedOrder";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "inventory",
         element: <Inventory />,
+      },
+      {
+        path: "proceed-order",
+        element: <ProceedOrder />,
       },
       {
         path: "login",

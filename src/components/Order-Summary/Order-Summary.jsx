@@ -1,8 +1,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faTrash,
+  faCreditCard,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-const OrderSummary = ({ cart, onClearCart: handleClearCart }) => {
+const OrderSummary = ({ cart, onClearCart: handleClearCart, children }) => {
   // const shippingCharge = cart?.length ? 5 : 0;
   // // calculate total
   // const totalPrice = cart?.length
@@ -20,7 +25,7 @@ const OrderSummary = ({ cart, onClearCart: handleClearCart }) => {
   let quantity = 0;
   for (const pdt of cart) {
     pdt.quantity = pdt.quantity || 1;
-    totalPrice += (pdt.price * pdt.quantity);
+    totalPrice += pdt.price * pdt.quantity;
     shippingCharge += pdt.shipping;
     tax += (totalPrice * 7) / 100;
     quantity += pdt.quantity;
@@ -48,16 +53,25 @@ const OrderSummary = ({ cart, onClearCart: handleClearCart }) => {
         </div>
         <div className="mt-12 space-y-4">
           <button
-            className="btn rounded-lg bg-ema-btn-bg border-ema-border text-white border-0 w-full "
+            className="btn rounded-lg bg-ema-btn-bg border-ema-border text-white border-0 w-full mb-4"
             onClick={handleClearCart}
           >
             Clear Cart
-            <FontAwesomeIcon className="ml-2" icon={faTrash} />
+            <FontAwesomeIcon className="ml-auto" icon={faTrash} />
           </button>
-          <button className="btn rounded-lg bg-ema-btn-bg-2 border-ema-border text-white border-0 w-full ">
-            Review Order
-            <FontAwesomeIcon className="ml-2" icon={faArrowRight} />
-          </button>
+          <Link
+            to={children === "Proceed Checkout" ? "/proceed-order" : "/orders"}
+          >
+            <button className="btn rounded-lg bg-ema-btn-bg-2 border-ema-border text-white border-0 w-full">
+              {children}
+              <FontAwesomeIcon
+                className="ml-auto"
+                icon={
+                  children === "Proceed Checkout" ? faCreditCard : faArrowRight
+                }
+              />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -28,7 +28,7 @@ const Order = () => {
         }
       </div>
       <div className="order-summary bg-ema-bg px-5 my-32 pb-5">
-        <OrderSummary cart={cart} onClearCart={handleClearCart}></OrderSummary>
+        <OrderSummary cart={cart} onClearCart={handleClearCart}>Proceed Checkout</OrderSummary>
       </div>
     </div>
   );

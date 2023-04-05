@@ -91,7 +91,7 @@ const Shop = () => {
         <div className="lg:grid grid-cols-3 gap-8">{allProducts}</div>
       </div>
       <div className="order-summary bg-ema-bg px-5">
-        <OrderSummary cart={cart} onClearCart={handleClearCart}></OrderSummary>
+        <OrderSummary cart={cart} onClearCart={handleClearCart}>Review Order</OrderSummary>
       </div>
     </div>
   );
