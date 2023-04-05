@@ -71,7 +71,7 @@ const Shop = () => {
       }
     }
     setCart(newCart);
-    console.log(newCart);
+    // console.log(newCart);
   },[products])
 
 
