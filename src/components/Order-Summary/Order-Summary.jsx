@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const OrderSummary = ({ cart, onClearCart }) => {
+const OrderSummary = ({ cart, onClearCart: handleClearCart }) => {
   // const shippingCharge = cart?.length ? 5 : 0;
   // // calculate total
   // const totalPrice = cart?.length
@@ -49,7 +49,7 @@ const OrderSummary = ({ cart, onClearCart }) => {
         <div className="mt-12 space-y-4">
           <button
             className="btn rounded-lg bg-ema-btn-bg border-ema-border text-white border-0 w-full "
-            onClick={onClearCart}
+            onClick={handleClearCart}
           >
             Clear Cart
             <FontAwesomeIcon className="ml-2" icon={faTrash} />
