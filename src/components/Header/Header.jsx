@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/images/Logo.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  // handleLogOut
+  const handleLogOut = () => {
+    logOut().then((result) => {
+      console.log("user log out");
+    });
+  };
   return (
     <nav className="bg-slate-800">
       <div className="navbar container mx-auto text-white pr-0">
@@ -22,9 +31,22 @@ const Header = () => {
             <li className="hover:text-orange-300">
               <Link to="/inventory">Manage Inventory</Link>
             </li>
+            {user ? (
+              <li onClick={handleLogOut} className="hover:text-orange-300">
+                <Link className="pr-0" to="/login">
+                  Log Out
+                </Link>
+              </li>
+            ) : (
+              <li className="hover:text-orange-300">
+                <Link className="pr-0" to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
             <li className="hover:text-orange-300">
               <Link className="pr-0" to="/login">
-                Login
+                {user && user.email}
               </Link>
             </li>
           </ul>
